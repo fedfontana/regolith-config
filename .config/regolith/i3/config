@@ -438,7 +438,8 @@ bar {
   mode dock
   font pango:Source Code Pro Medium 13, Material Design Icons 13
   separator_symbol " "
-  status_command i3xrocks -u ~/.config/regolith/i3xrocks/conf.d -d /etc/regolith/i3xrocks/conf.d
+  #status_command i3xrocks -u ~/.config/regolith/i3xrocks/conf.d -d /etc/regolith/i3xrocks/conf.d
+  status_command i3xrocks -c $HOME/.config/regolith/i3xrocks.conf
   tray_output primary
   strip_workspace_numbers yes
 
