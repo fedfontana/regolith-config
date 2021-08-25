@@ -8,6 +8,11 @@ sh -c 'curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs h
 git clone https://github.com/fedfontana/regolith-config regolith-dots #poi bisogna spostare la roba manualmente e mettere a posto il repo (da non-bare a bare)
 git clone https://github.com/fedfontana/dotto dotfiles #stessa cosa di sopra
 sudo apt install -y telegram-desktop
+sudo add-apt-repository ppa:mmstick76/alacritty
+sudo apt install alacritty
+sudo apt install -y tree bat
+
+alla fine reboot
 ## Da mettere in bootstrap
 `echo 'Entra su github/gitlab, elimina chiave ssh dell'installazione precedente e aggiungi $(cat $HOME/.ssh/id_rsa.pub)'`
 ## Da fare manualmente?

@@ -55,7 +55,7 @@ set_from_resource $ws9_key  i3-wm.workspace.09.key 9
 bindsym $mod+Return exec --no-startup-id alacritty
 
 ## Launch // Browser // <><Shift> Enter ##
-bindsym $mod+a exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
+bindsym $mod+a exec --no-startup-id firefox
 
 set_from_resource $rofiTheme rofi.theme /etc/regolith/styles/lascaille/rofi.rasi
 
@@ -69,7 +69,7 @@ bindsym $mod+Sfift+space exec --no-startup-id rofi -show run -theme $rofiTheme
 bindsym $mod+Ctrl+space exec --no-startup-id rofi -show window -theme $rofiTheme
 
 ## Launch // This Dialog // <><Shift> ? ##
-bindsym $mod+Shift+question exec --no-startup-id /usr/bin/remontoire-toggle
+bindsym $mod+Shift+question exec --no-startup-id $HOME/.scripts/remontoire-toggle
 
 ## Launch // File Search // <><Alt> Space ##
 bindsym $mod+$alt+space exec --no-startup-id rofi -show find -modi find:/usr/share/rofi/modi/finder.sh
@@ -236,7 +236,7 @@ workspace_layout default
 ###############################################################################
 
 ## Session // Exit App // <><Shift> q ##
-bindsym $mod+Shift+q [con_id="__focused__"] kill
+bindsym $mod+q [con_id="__focused__"] kill
 
 ## Session // Terminate App // <><Alt> q ##
 bindsym $mod+$alt+q [con_id="__focused__"] exec --no-startup-id kill -9 $(xdotool getwindowfocus getwindowpid)
