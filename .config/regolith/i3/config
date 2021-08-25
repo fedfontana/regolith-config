@@ -1,27 +1,41 @@
 ###############################################################################
-# i3-gaps config file for the Regolith Desktop Environment
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# i3-gaps config file
+# Docs: http://i3wm.org/docs/userguide.html
 ###############################################################################
 # This file uses a machine-parsable format for comments. The schema is:
 # ## <Category> // <Action> // <Keybinding> ##
 # Learn more at https://github.com/regolith-linux/remontoire
 ###############################################################################
 
+
+
+#Add gnome screenshot stuff?
+#add these to cicle through tabs in tabbed layout (find a way to do it only in tabbed layout)
+#bindsym $alt+Tab focus right
+#bindsym $alt+Shift+Tab focus left
+
+#add
+#cambiare keybindings in modo che siano il più comodo possibile
+#cambiare i keybindings nei commenti
+#spostare la roba autorun in posti in cui possa metterla su github per portarmela dietro in altre installazioni
+#reworkare tutta la parte dei colori
+#cambiare la parte della barra
+#cambiare la barra (prendere ispirazione da link su teletgram, altri config su internet e polybar di manji3)
+#passare da i3xrocks a i3blocks?
+#gdm????
+
 ###############################################################################
-# Key Mappings
+# Constants
 ###############################################################################
 
 # Meta Key - Alt key is Mod1, and Windows key is Mod4
 set $mod Mod4
 set $alt Mod1
 
-set_from_resource $i3-wm.binding. i3-wm.binding.
+# Rofi theme file
+set $rofiTheme /etc/regolith/styles/lascaille/rofi.rasi
 
-###############################################################################
 # Workspace Names
-# These are the labels which define each i3 workspace.
-###############################################################################
-
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -33,22 +47,41 @@ set $ws8 "8"
 set $ws9 "9"
 
 ###############################################################################
-# Workspace Keys
-# These are the keys which will be used while binding workspace switching
+# General Settings
 ###############################################################################
 
-set_from_resource $ws1_key  i3-wm.workspace.01.key 1
-set_from_resource $ws2_key  i3-wm.workspace.02.key 2
-set_from_resource $ws3_key  i3-wm.workspace.03.key 3
-set_from_resource $ws4_key  i3-wm.workspace.04.key 4
-set_from_resource $ws5_key  i3-wm.workspace.05.key 5
-set_from_resource $ws6_key  i3-wm.workspace.06.key 6
-set_from_resource $ws7_key  i3-wm.workspace.07.key 7
-set_from_resource $ws8_key  i3-wm.workspace.08.key 8
-set_from_resource $ws9_key  i3-wm.workspace.09.key 9
+title_align center
+
+# Hiding borders adjacent to the screen edges.
+# The "smart" setting hides borders on workspaces with only one window visible.
+hide_edge_borders smart
+
+# Set the default layout mode
+workspace_layout default
+
+# Disable titlebar
+default_border pixel 2
+default_floating_border pixel 1
+
+# Specify the distance between windows in pixels. (i3-gaps)
+gaps inner 5
+gaps outer 0
+
+# Only enable gaps on a workspace when there is at least one container
+smart_gaps on
+
+# Enable popup during fullscreen
+popup_during_fullscreen smart
+
+# window focus follows your mouse movements as the mouse crosses window borders
+focus_follows_mouse no
 
 ###############################################################################
-# Launcher dialogs
+# Key Mappings
+###############################################################################
+
+###############################################################################
+# Applications
 ###############################################################################
 
 ## Launch // Terminal // <> Enter ##
@@ -57,13 +90,49 @@ bindsym $mod+Return exec --no-startup-id alacritty
 ## Launch // Browser // <><Shift> Enter ##
 bindsym $mod+a exec --no-startup-id firefox
 
-set_from_resource $rofiTheme rofi.theme /etc/regolith/styles/lascaille/rofi.rasi
+## Launch // Telegram // <> t ##
+#bindsym $mod+t exec --no-startup-id telegram-desktop
+
+## Launch // Spotify // <> s ##
+#bindsym $mod+s exec --no-startup-id spotify
+
+## Launch // Ranger // <><Shift> f ##
+#bindsym $mod+r exec --no-startup-id alacritty -e ranger
+
+## Launch // File Browser // <><Shift> n ##
+bindsym $mod+Shift+n exec --no-startup-id /usr/bin/nautilus --new-window
+
+###############################################################################
+# Gnome settings related keybindings
+###############################################################################
+
+## Modify // Settings // <><Shift> c ##
+bindsym $mod+Shift+c exec --no-startup-id gnome-control-center --class=floating_window
+
+## Modify // Display Settings // <><Shift> d ##
+bindsym $mod+Shift+d exec --no-startup-id gnome-control-center --class=floating_window display
+
+## Modify // Wifi Settings // <><Shift> w ##
+bindsym $mod+Shift+w exec --no-startup-id gnome-control-center --class=floating_window wifi
+
+## Modify // Bluetooth Settings // <><Shift> b ##
+bindsym $mod+Shift+b exec --no-startup-id gnome-control-center --class=floating_window bluetooth
+
+## Modify // Sound Settings // <><Shift> s ##
+bindsym $mod+Shift+s exec --no-startup-id gnome-control-center --class=floating_window sound
+
+## Launch // Notification Viewer // <> n ##
+bindsym $mod+n exec --no-startup-id /usr/bin/rofication-gui
+
+###############################################################################
+# Launcher dialogs
+###############################################################################
 
 ## Launch // Application // <> Space ##
-bindsym $mod+space exec --no-startup-id rofi -show drun -theme $rofiTheme
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme $rofiTheme
 
 ## Launch // Command // <><Shift> Space ##
-bindsym $mod+Sfift+space exec --no-startup-id rofi -show run -theme $rofiTheme
+bindsym $mod+Shift+space exec --no-startup-id rofi -show run -theme $rofiTheme
 
 ## Navigate // Window by Name // <><Ctrl> Space ##
 bindsym $mod+Ctrl+space exec --no-startup-id rofi -show window -theme $rofiTheme
@@ -85,7 +154,7 @@ bindsym $mod+$alt+l exec --no-startup-id rofi -show look -modi look:/usr/share/r
 #bindsym $mod+a focus parent
 
 ## Navigate // Relative Child // <> z ##/
-bindsym $mod+z focus child
+#bindsym $mod+z focus child
 
 ## Navigate // Relative Window // <> ↑ ↓ ← → ##
 bindsym $mod+Left focus left
@@ -110,51 +179,28 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 
-## Navigate // Next Workspace // <> Tab ##
-bindsym $mod+Tab workspace next
-
-## Navigate // Next Workspace // <><Alt> → ##
-bindsym $mod+$alt+Right workspace next
-
-## Navigate // Next Workspace on Output // <><Ctrl> Tab ##
-bindsym $mod+Ctrl+Tab workspace next_on_output
-
-## Navigate // Next Workspace on Output // <><Ctrl> l ##
-bindsym $mod+Ctrl+l workspace next_on_output
-
-## Navigate // Previous Workspace // <><Shift> Tab ##
-bindsym $mod+Shift+Tab workspace prev
-
-## Navigate // Previous Workspace // <><Alt> ← ##
-bindsym $mod+$alt+Left workspace prev
-
-## Navigate // Previous Workspace on Output // <><Ctrl><Shift> Tab ##
-bindsym $mod+Ctrl+Shift+Tab workspace prev_on_output
-
-## Navigate // Previous Workspace on Output // <><Ctrl> h ##
-bindsym $mod+Ctrl+h workspace prev_on_output
-
-## Navigate // Next Free Workspace // <> ` ##
-bindsym $mod+grave exec --no-startup-id /usr/bin/i3-next-workspace
-
 ## Navigate // Scratchpad // <><Ctrl> a ##
-bindsym $mod+Ctrl+a scratchpad show
+#bindsym $mod+Ctrl+a scratchpad show
 
 ###############################################################################
 # Window and Workspace Configuration
 ###############################################################################
 
 ## Modify // Window Position // <><Shift> ↑ ↓ ← → ##
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Ctrl+Left move left
+bindsym $mod+Ctrl+Down move down
+bindsym $mod+Ctrl+Up move up
+bindsym $mod+Ctrl+Right move right
 
 ## Modify // Window Position // <><Shift> k j h l ##
-bindsym $mod+Shfit+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Ctrl+h move left
+bindsym $mod+Ctrl+j move down
+bindsym $mod+Ctrl+k move up
+bindsym $mod+Ctrl+l move right
+
+## Modify // Move container to other outputs // <><Alt> ← → ##
+bindsym $mod+$alt+Left move container to output left
+bindsym $mod+$alt+Right move container to output right
 
 ## Modify // Containing Workspace // <><Ctrl><Shift> ↑ ↓ ← → ##
 bindsym $mod+Ctrl+Shift+Left move workspace to output left
@@ -168,14 +214,8 @@ bindsym $mod+Ctrl+Shift+j move workspace to output down
 bindsym $mod+Ctrl+Shift+k move workspace to output up
 bindsym $mod+Ctrl+Shift+l move workspace to output right
 
-## Modify // Vertical Window Orientation // <> v ##
-bindsym $mod+v split vertical
-
-## Modify // Horizontal Window Orientation // <> g ##
-bindsym $mod+g split horizontal
-
 ## Modify // Toggle Window Orientation // <> Backspace ##
-bindsym $mod+BackSpace split toggle
+bindsym $mod+z split toggle
 
 ## Modify // Window Fullscreen Toggle // <> f ##
 bindsym $mod+f fullscreen toggle
@@ -184,13 +224,13 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+f floating toggle
 
 ## Modify // Move to Scratchpad // <><Ctrl> m ##
-bindsym $mod+Ctrl+m move to scratchpad
+#bindsym $mod+Ctrl+m move to scratchpad
 
 ## Modify // Tile/Float Focus Toggle // <><Shift> t ##
 bindsym $mod+Shift+t focus mode_toggle
 
 ## Modify // Window Layout Mode // <> t ##
-bindsym $mod+t layout toggle tabbed splith splitv
+bindsym $mod+t layout toggle tabbed split
 
 ## Modify // Move Window to Workspace 1 - 9 // <><Shift> 1..9 ##
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -202,9 +242,6 @@ bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
-
-## Modify // Move Window to Next Free Workspace // <><Shift> ` ##
-bindsym $mod+Shift+grave exec --no-startup-id /usr/bin/i3-next-workspace --move-window
 
 # move focused container to workspace, move to workspace
 ## Modify // Carry Window to Workspace 1 - 9// <><Alt> 1..9 ##
@@ -218,31 +255,28 @@ bindsym $mod+$alt+7 move container to workspace number $ws7; workspace number $w
 bindsym $mod+$alt+8 move container to workspace number $ws8; workspace number $ws8
 bindsym $mod+$alt+9 move container to workspace number $ws9; workspace number $ws9
 
-## Modify // Carry Window to Next Free Workspace // <><Alt> ` ##
-bindsym $mod+$alt+grave exec --no-startup-id /usr/bin/i3-next-workspace --move-window-and-follow
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Hiding borders adjacent to the screen edges.
-# The "smart" setting hides borders on workspaces with only one window visible.
-hide_edge_borders smart
+###############################################################################
+# Closing Apps
+###############################################################################
 
-# Set the default layout mode
-workspace_layout default
+## Session // Exit App // <> q ##
+bindsym $mod+q [con_id="__focused__"] kill
+
+## Session // Kill all apps in current workspace // <><Shift> q ##
+bindsym $mod+Shift+q focus parent; kill
+
+## Session // Terminate App // <><Alt> q ##
+bindsym $mod+$alt+q [con_id="__focused__"] exec --no-startup-id kill -9 $(xdotool getwindowfocus getwindowpid)
 
 ###############################################################################
 # Session Management
 ###############################################################################
 
-## Session // Exit App // <><Shift> q ##
-bindsym $mod+q [con_id="__focused__"] kill
-
-## Session // Terminate App // <><Alt> q ##
-bindsym $mod+$alt+q [con_id="__focused__"] exec --no-startup-id kill -9 $(xdotool getwindowfocus getwindowpid)
-
 ## Session // Reload i3 Config // <><Shift> c ##
-bindsym $mod+Shift+c reload
+bindsym $mod+$alt+Shift+c reload #solo mod shift c
 
 ## Session // Refresh Session // <><Shift> r ##
 bindsym $mod+Shift+r exec --no-startup-id /usr/bin/regolith-look refresh
@@ -257,32 +291,9 @@ bindsym $mod+Shift+e exec --no-startup-id /usr/bin/gnome-session-quit --logout
 bindsym $mod+Escape exec dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
 
 ## Session // Sleep // <><Shift> s ##
-bindsym $mod+Shift+s exec --no-startup-id systemctl suspend
+bindsym $mod+$alt+Shift+s exec --no-startup-id systemctl suspend
 
-###############################################################################
-# System Management
-###############################################################################
 
-## Modify // Settings // <> c ##
-bindsym $mod+c exec --no-startup-id gnome-control-center --class=floating_window
-
-## Modify // Display Settings // <> d ##
-bindsym $mod+d exec --no-startup-id gnome-control-center --class=floating_window display
-
-## Modify // Wifi Settings // <> w ##
-bindsym $mod+w exec --no-startup-id gnome-control-center --class=floating_window wifi
-
-## Modify // Bluetooth Settings // <> b ##
-bindsym $mod+b exec --no-startup-id gnome-control-center --class=floating_window bluetooth
-
-## Modify // Sound Settings // <> s ##
-bindsym $mod+s exec --no-startup-id gnome-control-center --class=floating_window sound
-
-## Launch // File Browser // <><Shift> n ##
-bindsym $mod+Shift+n exec --no-startup-id /usr/bin/nautilus --new-window
-
-## Launch // Notification Viewer // <> n ##
-bindsym $mod+n exec --no-startup-id /usr/bin/rofication-gui
 
 ###############################################################################
 # Workspace Management
@@ -346,27 +357,6 @@ mode "Resize Mode" {
         bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "Resize Mode"
-
-###############################################################################
-# i3 Appearance and Behavior
-###############################################################################
-
-# Disable titlebar
-default_border pixel 2
-default_floating_border pixel 1
-
-# Specify the distance between windows in pixels. (i3-gaps)
-gaps inner 5
-gaps outer 0
-
-# Only enable gaps on a workspace when there is at least one container
-smart_gaps on
-
-# Enable popup during fullscreen
-popup_during_fullscreen smart
-
-# window focus follows your mouse movements as the mouse crosses window borders
-focus_follows_mouse no
 
 ###############################################################################
 # i3 Colors and Fonts
