@@ -24,6 +24,11 @@
 #passare da i3xrocks a i3blocks?
 #gdm????
 
+
+#! ranger
+#! nautilus
+#! launcher dialogs - quali tenere, quali cambiare, quali mettere su altri keybindings?
+
 ###############################################################################
 # Constants
 ###############################################################################
@@ -76,6 +81,8 @@ popup_during_fullscreen smart
 # window focus follows your mouse movements as the mouse crosses window borders
 focus_follows_mouse no
 
+workspace_auto_back_and_forth no
+
 ###############################################################################
 # Key Mappings
 ###############################################################################
@@ -87,20 +94,20 @@ focus_follows_mouse no
 ## Launch // Terminal // <> Enter ##
 bindsym $mod+Return exec --no-startup-id alacritty
 
-## Launch // Browser // <><Shift> Enter ##
+## Launch // Browser // <> a ##
 bindsym $mod+a exec --no-startup-id firefox
 
 ## Launch // Telegram // <> t ##
-#bindsym $mod+t exec --no-startup-id telegram-desktop
+bindsym $mod+t exec --no-startup-id telegram-desktop
 
 ## Launch // Spotify // <> s ##
-#bindsym $mod+s exec --no-startup-id spotify
+bindsym $mod+s exec --no-startup-id spotify
 
 ## Launch // Ranger // <><Shift> f ##
 #bindsym $mod+r exec --no-startup-id alacritty -e ranger
 
-## Launch // File Browser // <><Shift> n ##
-bindsym $mod+Shift+n exec --no-startup-id /usr/bin/nautilus --new-window
+## Launch // File Browser // <> n ##
+bindsym $mod+n exec --no-startup-id /usr/bin/nautilus --new-window
 
 ###############################################################################
 # Gnome settings related keybindings
@@ -121,8 +128,8 @@ bindsym $mod+Shift+b exec --no-startup-id gnome-control-center --class=floating_
 ## Modify // Sound Settings // <><Shift> s ##
 bindsym $mod+Shift+s exec --no-startup-id gnome-control-center --class=floating_window sound
 
-## Launch // Notification Viewer // <> n ##
-bindsym $mod+n exec --no-startup-id /usr/bin/rofication-gui
+## Launch // Notification Viewer // <><Shift> n ##
+bindsym $mod+Shift+n exec --no-startup-id /usr/bin/rofication-gui
 
 ###############################################################################
 # Launcher dialogs
@@ -150,11 +157,11 @@ bindsym $mod+$alt+l exec --no-startup-id rofi -show look -modi look:/usr/share/r
 # Window and Workspace Navigation
 ###############################################################################
 
-## Navigate // Relative Parent // <> a ##/
-#bindsym $mod+a focus parent
+## Navigate // Relative Parent // <> p ##/
+bindsym $mod+p focus parent
 
-## Navigate // Relative Child // <> z ##/
-#bindsym $mod+z focus child
+## Navigate // Relative Child // <> c ##/
+bindsym $mod+c focus child
 
 ## Navigate // Relative Window // <> ↑ ↓ ← → ##
 bindsym $mod+Left focus left
@@ -178,9 +185,6 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
-
-## Navigate // Scratchpad // <><Ctrl> a ##
-#bindsym $mod+Ctrl+a scratchpad show
 
 ###############################################################################
 # Window and Workspace Configuration
@@ -220,17 +224,8 @@ bindsym $mod+z split toggle
 ## Modify // Window Fullscreen Toggle // <> f ##
 bindsym $mod+f fullscreen toggle
 
-## Modify // Window Floating Toggle // <><Shift> f ##
-bindsym $mod+Shift+f floating toggle
-
-## Modify // Move to Scratchpad // <><Ctrl> m ##
-#bindsym $mod+Ctrl+m move to scratchpad
-
-## Modify // Tile/Float Focus Toggle // <><Shift> t ##
-bindsym $mod+Shift+t focus mode_toggle
-
-## Modify // Window Layout Mode // <> t ##
-bindsym $mod+t layout toggle tabbed split
+## Modify // Window Layout Mode // <> m ##
+bindsym $mod+m layout toggle tabbed split
 
 ## Modify // Move Window to Workspace 1 - 9 // <><Shift> 1..9 ##
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -255,20 +250,47 @@ bindsym $mod+$alt+7 move container to workspace number $ws7; workspace number $w
 bindsym $mod+$alt+8 move container to workspace number $ws8; workspace number $ws8
 bindsym $mod+$alt+9 move container to workspace number $ws9; workspace number $ws9
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+###############################################################################
+# Scratchpad
+###############################################################################
+
+## Scratchpad // Move focused window to Scratchpad // <><Ctrl> m ##
+bindsym $mod+Ctrl+m move to scratchpad
+
+## Scratchpad // show Scratchpad (press more than once to cycle winwows in Scratchpad) // <><Ctrl> a ##
+bindsym $mod+Ctrl+a scratchpad show
+
+## Scratchpad // Show all scratchpad windows // <><Ctrl> Enter ##
+bindsym $mod+Ctrl+Return [class=.*] scratchpad show
+
+###############################################################################
+# Floating windows
+###############################################################################
+
+## Floating // Window Floating Toggle // <><Shift> f ##
+bindsym $mod+Shift+f floating toggle
+
+## Floating // Move window // <> Left click ##
 floating_modifier $mod
+## Floating // Resize window // <> Right click ##
+
+## Floating // Make a floating window sticky // <><Shift> Enter ##
+bindsym $mod+$alt+r sticky toggle
+
+## Floating // Tile/Float Focus Toggle // <><Shift> t ##
+bindsym $mod+Shift+t focus mode_toggle
 
 ###############################################################################
 # Closing Apps
 ###############################################################################
 
-## Session // Exit App // <> q ##
+## Close // Exit App // <> q ##
 bindsym $mod+q [con_id="__focused__"] kill
 
-## Session // Kill all apps in current workspace // <><Shift> q ##
+## Close // Kill all apps in current workspace // <><Shift> q ##
 bindsym $mod+Shift+q focus parent; kill
 
-## Session // Terminate App // <><Alt> q ##
+## Close // Terminate App // <><Alt> q ##
 bindsym $mod+$alt+q [con_id="__focused__"] exec --no-startup-id kill -9 $(xdotool getwindowfocus getwindowpid)
 
 ###############################################################################
@@ -290,20 +312,12 @@ bindsym $mod+Shift+e exec --no-startup-id /usr/bin/gnome-session-quit --logout
 ## Session // Lock Screen // <> Escape ##
 bindsym $mod+Escape exec dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
 
-## Session // Sleep // <><Shift> s ##
+## Session // Sleep // <><Alt><Shift> s ##
 bindsym $mod+$alt+Shift+s exec --no-startup-id systemctl suspend
-
-
 
 ###############################################################################
 # Workspace Management
 ###############################################################################
-
-# i3-snapshot for load/save current layout
-## Modify // Save Window Layout // <> , ##
-bindsym $mod+comma exec --no-startup-id /usr/bin/i3-snapshot -o > /tmp/i3-snapshot
-## Modify // Load Window Layout // <> . ##
-bindsym $mod+period exec --no-startup-id /usr/bin/i3-snapshot -c < /tmp/i3-snapshot
 
 # Toggle bar visibility
 ## Modify // Toggle Bar // <> i ##
@@ -312,8 +326,6 @@ bindsym $mod+i bar mode toggle
 # Cause Settings app to float above tiled windows
 floating_maximum_size -1 x -1
 for_window [class="floating_window"] floating enable
-
-workspace_auto_back_and_forth no
 
 ###############################################################################
 # Window Resize and Gaps
@@ -329,6 +341,7 @@ mode "Resize Mode" {
         bindsym Up resize shrink height 6 px or 6 ppt
         bindsym Right resize grow width 6 px or 6 ppt
 
+        ## Resize // Resize Window more // <Shift> ↑ ↓ ← → ##
         bindsym Shift+Left resize shrink width 12 px or 12 ppt
         bindsym Shift+Down resize grow height 12 px or 12 ppt
         bindsym Shift+Up resize shrink height 12 px or 12 ppt
@@ -340,6 +353,7 @@ mode "Resize Mode" {
         bindsym k resize shrink height 6 px or 6 ppt
         bindsym l resize grow width 6 px or 6 ppt
 
+        ## Resize // Resize Window more // <Shift> k j h l ##
         bindsym Shift+h resize shrink width 12 px or 12 ppt
         bindsym Shift+j resize grow height 12 px or 12 ppt
         bindsym Shift+k resize shrink height 12 px or 12 ppt
@@ -348,10 +362,12 @@ mode "Resize Mode" {
         ## Resize // Window Gaps // + - ##
         bindsym minus gaps inner current minus 6
         bindsym plus gaps inner current plus 6
+
+        ## Resize // Window Gaps more // <Shift> + - ##
         bindsym Shift+minus gaps inner current minus 12
         bindsym Shift+plus gaps inner current plus 12
 
-        ## Resize // Exit Resize Mode // Escape or Enter ##
+        ## Resize // Exit Resize Mode // <> r or Escape or Enter ##
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -438,7 +454,7 @@ bar {
       statusline $i3-wm.bar.statusline.color
       separator  $i3-wm.bar.separator.color
 
-#                        BORDER  BACKGROUND TEXT
+#                        BORDER                                         BACKGROUND                                      TEXT
       focused_workspace  $i3-wm.bar.workspace.focused.border.color      $i3-wm.bar.workspace.focused.background.color   $i3-wm.bar.workspace.focused.text.color
       active_workspace   $i3-wm.bar.workspace.active.border.color       $i3-wm.bar.workspace.active.background.color    $i3-wm.bar.workspace.active.text.color
       inactive_workspace $i3-wm.bar.workspace.inactive.border.color     $i3-wm.bar.workspace.inactive.background.color  $i3-wm.bar.workspace.inactive.text.color
