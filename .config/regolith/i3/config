@@ -8,12 +8,6 @@
 ###############################################################################
 
 
-
-#Add gnome screenshot stuff?
-#add these to cicle through tabs in tabbed layout (find a way to do it only in tabbed layout)
-#bindsym $alt+Tab focus right
-#bindsym $alt+Shift+Tab focus left
-
 #add
 #cambiare keybindings in modo che siano il più comodo possibile
 #cambiare i keybindings nei commenti
@@ -22,12 +16,12 @@
 #cambiare la parte della barra
 #cambiare la barra (prendere ispirazione da link su teletgram, altri config su internet e polybar di manji3)
 #passare da i3xrocks a i3blocks?
+#gnome screenshot stuff?
 #gdm????
-
 
 #! ranger
 #! nautilus
-#! launcher dialogs - quali tenere, quali cambiare, quali mettere su altri keybindings?
+#! launcher dialogs - quali tenere, quali cambiare, quali mettere su altri keybindings? (spostare file in .config o .scripts in modo da caricarli su github)
 
 ###############################################################################
 # Constants
@@ -103,8 +97,8 @@ bindsym $mod+t exec --no-startup-id telegram-desktop
 ## Launch // Spotify // <> s ##
 bindsym $mod+s exec --no-startup-id spotify
 
-## Launch // Ranger // <><Shift> f ##
-#bindsym $mod+r exec --no-startup-id alacritty -e ranger
+## Launch // Ranger // <><Shift> r ##
+#bindsym $mod+Shift+r exec --no-startup-id alacritty -e ranger
 
 ## Launch // File Browser // <> n ##
 bindsym $mod+n exec --no-startup-id /usr/bin/nautilus --new-window
@@ -114,7 +108,7 @@ bindsym $mod+n exec --no-startup-id /usr/bin/nautilus --new-window
 ###############################################################################
 
 ## Modify // Settings // <><Shift> c ##
-bindsym $mod+Shift+c exec --no-startup-id gnome-control-center --class=floating_window
+bindsym $mod+Shift+i exec --no-startup-id gnome-control-center --class=floating_window
 
 ## Modify // Display Settings // <><Shift> d ##
 bindsym $mod+Shift+d exec --no-startup-id gnome-control-center --class=floating_window display
@@ -138,20 +132,14 @@ bindsym $mod+Shift+n exec --no-startup-id /usr/bin/rofication-gui
 ## Launch // Application // <> Space ##
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme $rofiTheme
 
-## Launch // Command // <><Shift> Space ##
-bindsym $mod+Shift+space exec --no-startup-id rofi -show run -theme $rofiTheme
-
-## Navigate // Window by Name // <><Ctrl> Space ##
-bindsym $mod+Ctrl+space exec --no-startup-id rofi -show window -theme $rofiTheme
+## Navigate // Window by Name // <><Tab> ##
+bindsym $mod+Tab exec --no-startup-id rofi -show window -theme $rofiTheme
 
 ## Launch // This Dialog // <><Shift> ? ##
 bindsym $mod+Shift+question exec --no-startup-id $HOME/.scripts/remontoire-toggle
 
 ## Launch // File Search // <><Alt> Space ##
 bindsym $mod+$alt+space exec --no-startup-id rofi -show find -modi find:/usr/share/rofi/modi/finder.sh
-
-## Launch // Look Selector // <><Alt> l ##
-bindsym $mod+$alt+l exec --no-startup-id rofi -show look -modi look:/usr/share/rofi/modi/look-selector.sh
 
 ###############################################################################
 # Window and Workspace Navigation
@@ -190,13 +178,13 @@ bindsym $mod+9 workspace number $ws9
 # Window and Workspace Configuration
 ###############################################################################
 
-## Modify // Window Position // <><Shift> ↑ ↓ ← → ##
+## Modify // Window Position // <><Ctrl> ↑ ↓ ← → ##
 bindsym $mod+Ctrl+Left move left
 bindsym $mod+Ctrl+Down move down
 bindsym $mod+Ctrl+Up move up
 bindsym $mod+Ctrl+Right move right
 
-## Modify // Window Position // <><Shift> k j h l ##
+## Modify // Window Position // <><Ctrl> k j h l ##
 bindsym $mod+Ctrl+h move left
 bindsym $mod+Ctrl+j move down
 bindsym $mod+Ctrl+k move up
@@ -218,7 +206,7 @@ bindsym $mod+Ctrl+Shift+j move workspace to output down
 bindsym $mod+Ctrl+Shift+k move workspace to output up
 bindsym $mod+Ctrl+Shift+l move workspace to output right
 
-## Modify // Toggle Window Orientation // <> Backspace ##
+## Modify // Toggle Window Orientation // <> z ##
 bindsym $mod+z split toggle
 
 ## Modify // Window Fullscreen Toggle // <> f ##
@@ -254,8 +242,8 @@ bindsym $mod+$alt+9 move container to workspace number $ws9; workspace number $w
 # Scratchpad
 ###############################################################################
 
-## Scratchpad // Move focused window to Scratchpad // <><Ctrl> m ##
-bindsym $mod+Ctrl+m move to scratchpad
+## Scratchpad // Move focused window to Scratchpad // <><Ctrl> s ##
+bindsym $mod+Ctrl+s move to scratchpad
 
 ## Scratchpad // show Scratchpad (press more than once to cycle winwows in Scratchpad) // <><Ctrl> a ##
 bindsym $mod+Ctrl+a scratchpad show
@@ -274,7 +262,7 @@ bindsym $mod+Shift+f floating toggle
 floating_modifier $mod
 ## Floating // Resize window // <> Right click ##
 
-## Floating // Make a floating window sticky // <><Shift> Enter ##
+## Floating // Make a floating window sticky // <><Alt> r ##
 bindsym $mod+$alt+r sticky toggle
 
 ## Floating // Tile/Float Focus Toggle // <><Shift> t ##
@@ -298,16 +286,13 @@ bindsym $mod+$alt+q [con_id="__focused__"] exec --no-startup-id kill -9 $(xdotoo
 ###############################################################################
 
 ## Session // Reload i3 Config // <><Shift> c ##
-bindsym $mod+$alt+Shift+c reload #solo mod shift c
-
-## Session // Refresh Session // <><Shift> r ##
-bindsym $mod+Shift+r exec --no-startup-id /usr/bin/regolith-look refresh
+bindsym $mod+Shift+c reload #solo mod shift c
 
 ## Session // Restart i3 // <><Ctrl> r ##
 bindsym $mod+Ctrl+r restart
 
-## Session // Logout // <><Shift> e ##
-bindsym $mod+Shift+e exec --no-startup-id /usr/bin/gnome-session-quit --logout
+## Session // Logout // <><Alt><Shift> e ##
+bindsym $mod+$alt+Shift+e exec --no-startup-id /usr/bin/gnome-session-quit --logout
 
 ## Session // Lock Screen // <> Escape ##
 bindsym $mod+Escape exec dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
