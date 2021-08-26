@@ -178,6 +178,12 @@ bindsym $mod+9 workspace number $ws9
 # Window and Workspace Configuration
 ###############################################################################
 
+#potrebbe essere interessante: questo swappa la app corrente con quella alla sua destra
+#bindsym $mod+g mark swap; focus right; swap container with mark swap; unmark swap
+
+## Modify // Swap left monitor workspace with the right monitor one // <> g ##
+bindsym $mod+g exec --no-startup-id $HOME/.scripts/i3-swap-display.sh
+
 ## Modify // Window Position // <><Ctrl> ↑ ↓ ← → ##
 bindsym $mod+Ctrl+Left move left
 bindsym $mod+Ctrl+Down move down
@@ -364,29 +370,29 @@ bindsym $mod+r mode "Resize Mode"
 ###############################################################################
 
 # Create variables from Xresources for i3's look.
-set_from_resource $focused.color.border i3-wm.client.focused.color.border "#002b36"
-set_from_resource $focused.color.background i3-wm.client.focused.color.background "#586e75"
-set_from_resource $focused.color.text i3-wm.client.focused.color.text "#fdf6e3"
-set_from_resource $focused.color.indicator i3-wm.client.focused.color.indicator "#268bd2"
-set_from_resource $focused.color.child_border i3-wm.client.focused.color.child_border
+set $focused.color.border "#1F2430"
+set $focused.color.background "#BFBAB0"
+set $focused.color.text "#FFFFFF"
+set $focused.color.indicator "#FFA759"
+set $focused.color.child_border "#BFBAB0"
 
-set_from_resource $focused_inactive.color.border i3-wm.client.focused_inactive.color.border "#002b36"
-set_from_resource $focused_inactive.color.background i3-wm.client.focused_inactive.color.background "#073642"
-set_from_resource $focused_inactive.color.text i3-wm.client.focused_inactive.color.text "#839496"
-set_from_resource $focused_inactive.color.indicator i3-wm.client.focused_inactive.color.indicator "#073642"
-set_from_resource $focused_inactive.color.child_border i3-wm.client.focused_inactive.color.child_border
+set $focused_inactive.color.border "#1F2430"
+set $focused_inactive.color.background "#292B30"
+set $focused_inactive.color.text "#E6E1CF"
+set $focused_inactive.color.indicator "#FFA759"
+set $focused_inactive.color.child_border "#1F2430"
 
-set_from_resource $unfocused.color.border i3-wm.client.unfocused.color.border "#002b36"
-set_from_resource $unfocused.color.background i3-wm.client.unfocused.color.background "#073642"
-set_from_resource $unfocused.color.text i3-wm.client.unfocused.color.text "#839496"
-set_from_resource $unfocused.color.indicator i3-wm.client.unfocused.color.indicator "#073642"
-set_from_resource $unfocused.color.child_border i3-wm.client.unfocused.color.child_border
+set $unfocused.color.border "#1F2430"
+set $unfocused.color.background "#292B30"
+set $unfocused.color.text "#E6E1CF"
+set $unfocused.color.indicator "#292B30"
+set $unfocused.color.child_border "#1F2430"
 
-set_from_resource $urgent.color.border i3-wm.client.urgent.color.border "#002b36"
-set_from_resource $urgent.color.background i3-wm.client.urgent.color.background "#dc322f"
-set_from_resource $urgent.color.text i3-wm.client.urgent.color.text "#fdf6e3"
-set_from_resource $urgent.color.indicator i3-wm.client.urgent.color.indicator "#002b36"
-set_from_resource $urgent.color.child_border i3-wm.client.urgent.color.child_border
+set $urgent.color.border "#1F2430"
+set $urgent.color.background "#FF3333"
+set $urgent.color.text "#FFFFFF"
+set $urgent.color.indicator "#FF3333"
+set $urgent.color.child_border "#1F2430"
 
 
 # Window Border color
@@ -397,25 +403,25 @@ client.unfocused        $unfocused.color.border            $unfocused.color.back
 client.urgent           $urgent.color.border               $urgent.color.background           $urgent.color.text                 $urgent.color.indicator            $urgent.color.child_border
 
 # Create variables from Xresources for i3bars's look.
-set_from_resource $i3-wm.bar.background.color i3-wm.bar.background.color "#002b36"
-set_from_resource $i3-wm.bar.statusline.color i3-wm.bar.statusline.color "#93a1a1"
-set_from_resource $i3-wm.bar.separator.color i3-wm.bar.separator.color "#268bd2"
+set $i3-wm.bar.background.color "#1F2430"
+set $i3-wm.bar.statusline.color "#E6E1CF"
+set $i3-wm.bar.separator.color "#77A8D9"
 
-set_from_resource $i3-wm.bar.workspace.focused.border.color i3-wm.bar.workspace.focused.border.color "#073642"
-set_from_resource $i3-wm.bar.workspace.focused.background.color i3-wm.bar.workspace.focused.background.color "#073642"
-set_from_resource $i3-wm.bar.workspace.focused.text.color i3-wm.bar.workspace.focused.text.color "#eee8d5"
+set $i3-wm.bar.workspace.focused.border.color "#FFA759"
+set $i3-wm.bar.workspace.focused.background.color "#FFA759"
+set $i3-wm.bar.workspace.focused.text.color "#1F2430"
 
-set_from_resource $i3-wm.bar.workspace.active.border.color i3-wm.bar.workspace.active.border.color "#073642"
-set_from_resource $i3-wm.bar.workspace.active.background.color i3-wm.bar.workspace.active.background.color "#073642"
-set_from_resource $i3-wm.bar.workspace.active.text.color i3-wm.bar.workspace.active.text.color "#586e75"
+set $i3-wm.bar.workspace.active.border.color "#FFD580"
+set $i3-wm.bar.workspace.active.background.color "#FFD580"
+set $i3-wm.bar.workspace.active.text.color "#292B30"
 
-set_from_resource $i3-wm.bar.workspace.inactive.border.color i3-wm.bar.workspace.inactive.border.color "#002b36"
-set_from_resource $i3-wm.bar.workspace.inactive.background.color i3-wm.bar.workspace.inactive.background.color "#002b36"
-set_from_resource $i3-wm.bar.workspace.inactive.text.color i3-wm.bar.workspace.inactive.text.color "#586e75"
+set $i3-wm.bar.workspace.inactive.border.color "#BFBAB0"
+set $i3-wm.bar.workspace.inactive.background.color "#BFBAB0"
+set $i3-wm.bar.workspace.inactive.text.color "#292B30"
 
-set_from_resource $i3-wm.bar.workspace.urgent.border.color i3-wm.bar.workspace.urgent.border.color "#dc322f"
-set_from_resource $i3-wm.bar.workspace.urgent.background.color i3-wm.bar.workspace.urgent.background.color "#dc322f"
-set_from_resource $i3-wm.bar.workspace.urgent.text.color i3-wm.bar.workspace.urgent.text.color "#fdf6e3"
+set $i3-wm.bar.workspace.urgent.border.color "#FF3333"
+set $i3-wm.bar.workspace.urgent.background.color "#FF3333"
+set $i3-wm.bar.workspace.urgent.text.color "#FFFFFF"
 
 # Sets i3 font for dialogs
 font pango:Source Code Pro Medium 13

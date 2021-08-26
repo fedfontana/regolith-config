@@ -9,6 +9,9 @@
 	- disable touchpad while typing or sth is bugging me
 - clone other general config files from dotto
 
+- nello script deve esserci chmox +x di ogni file in .scripts
+- sudo apt install -y jq è prereq per .scripts/i3-swap-display
+
 # Todo finire config 
 - controllare come far funzionare bene roba da laptop
 - bootstrap script?
