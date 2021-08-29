@@ -65,6 +65,7 @@ Dependencies:
 - why is the pc suddenly heating up? (after changin drivers?)
 - there should be a better cpu temp script on vivian/i3blocks-contrib 
 - check dependencies
+- add left/right click actions
 
 - mic/sound blocklet (+keybindings in i3 config so that i can send a signal to the blocklet to update when needed, if it doesnt break the gnome-sound-overlay-thing-that-pops-up-when-changing-the-volume)
 
