@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 temp=$(
     sensors 'coretemp-*' \
         | grep '^Package id' \
@@ -7,24 +7,15 @@ temp=$(
         | head -n1
 )
 
+ICON=""
 if [[ "$temp" -lt 30 ]]; then
-    printf '\uf2cb'
+    ICON=""
 elif [[ "$temp" -lt 40 ]]; then
-    printf '\uf2ca'
+    ICON=""
 elif [[ "$temp" -lt 50 ]]; then
-    printf '\uf2c9'
+	ICON=""
 elif [[ "$temp" -lt 60 ]]; then
-    printf '\uf2c8'
-else
-    printf '\uf2c9'
+    ICON=""
 fi
 
-printf '  %s\u2009°C\n' $temp
-
-if [[ "$temp" -lt 40 ]]; then
-    printf '\n#3383AE'
-elif [[ "$temp" -ge 60 ]]; then
-    printf '\n#EEBF13'
-elif [[ "$temp" -ge 75 ]]; then
-    printf '\n#E41C28'
-fi
+echo '<span foreground="#db2c00">'$ICON'</span>' $temp°C

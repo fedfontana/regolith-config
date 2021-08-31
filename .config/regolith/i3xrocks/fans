@@ -1,5 +1,5 @@
-#!/usr/bin/sh
+#!/usr/bin/env sh
 
 rpms=$(sensors | grep 'fan[1-2]' | awk '{print $2}')
-echo  $rpms RPM
+echo '<span foreground="#f2a516"></span>' $rpms RPM
 # maybe add conditional logic so that if both fans are off show ﴛ

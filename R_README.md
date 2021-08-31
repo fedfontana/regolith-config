@@ -23,7 +23,12 @@
 - [anche questo carino](https://gitlab.com/aquator/i3-scratchpad)
 - [blocklets scripts utili](https://github.com/Anachron/i3blocks/tree/master/blocks)
 - [blocklets](github.com/vivien/i3blocks-contrib)
-- add a keybinding to increase/decrease/mute mic volume (if it is not already one by default in gnome)
+- [luke smith's old rice config files?](https://gitlab.com/LukeSmithxyz/voidrice/-/blob/1669b3c2b95dc7143f84470ca8dd5bb35283821a/.config/i3/config)
+- add a keybinding to increase/decrease/mute mic volume (if it is not already one by default in gnome nel repo e cambiarli per script setup)
+- copiare i file di init e i vari Xinitrc e Xargs + roba da /usr/bin/regolith-\* e simili nel repo e cambiarli per script setup
+- muovere tutta la roba dagli exec_always di i3/config a Xinit
+- `/usr/share/xsessions/regolith.desktop` è la root di tutto
+- [Nerd font icon search](https://www.nerdfonts.com/cheat-sheet)
 
 - [JetBrains Mono nerd font patched](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf)
 - [Source Code Pro nerd font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf)
@@ -37,11 +42,6 @@
 - gnome flashback notifications?
 
 # i3blocks
-
-Blocklets script da cambiare:
-- battery
-- gpu load
-- mediaplayer
 
 Dependencies:
 - acpi
@@ -59,12 +59,12 @@ Dependencies:
 - add "custom/reactive" titles to alacritty (alacritty.yml or zsh file from oh-my-zsh)
 - check other configurations and look for other custom scripts
 - change blocklets scripts
-- gpu temp script
-- gpu load script
 - change blocklets colors
-- why isnt the media player blocklet working
 - add left/right click actions
+- add colors to text based on levels of stuff -- cpu at 50% => still blue icon, yelowe text
+- media player blocklet doesnt update to the next player (if firefox stays open with yt open and i start listening to music on spotify the blocklet will still show the yt title paused). `playerctl metadata -F` (--follow) fixes this, but it shows 
 
+- bluetooth blocklet?
 - mic/sound blocklet (+keybindings in i3 config so that i can send a signal to the blocklet to update when needed, if it doesnt break the gnome-sound-overlay-thing-that-pops-up-when-changing-the-volume)
 
 # Tracked files list

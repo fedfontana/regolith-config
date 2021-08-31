@@ -441,7 +441,7 @@ bar {
   mode dock
   #font pango:Source Code Pro Medium 13, Material Design Icons 13
   font pango:Sauce Code Pro Nerd Font Medium 14
-  separator_symbol " | "
+  separator_symbol "|"
   #status_command i3xrocks -u ~/.config/regolith/i3xrocks/conf.d -d /etc/regolith/i3xrocks/conf.d
   status_command i3xrocks -c $HOME/.config/regolith/i3xrocks.conf
   tray_output primary
@@ -465,19 +465,14 @@ bar {
 ###############################################################################
 
 # Start the installed regolith-compositor
-exec_always --no-startup-id /usr/share/regolith-compositor/init
-
-# Start Rofication for notifications
-exec --no-startup-id /usr/bin/rofication-daemon
-
-# Launch first time user experience script
-exec --no-startup-id /usr/bin/regolith-ftue
+exec_always --no-startup-id $HOME/.scripts/picom-init
 
 # Hide the mouse pointer if unused for a duration
-exec --no-startup-id /usr/bin/unclutter -b
+exec_always --no-startup-id /usr/bin/unclutter --exclude-root -b
 
 # Load nm-applet to provide auth dialogs for network access
-exec --no-startup-id /usr/bin/nm-applet
+exec_always --no-startup-id /usr/bin/nm-applet
 
 # Start notification daemon
-exec --no-startup-id dunst -conf $HOME/.config/regolith/dunst/dunstrc
+exec_always --no-startup-id dunst -conf $HOME/.config/regolith/dunst/dunstrc
+

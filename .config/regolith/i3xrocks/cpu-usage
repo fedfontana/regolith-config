@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
 perc=$(mpstat 1 1 | grep Average | awk '{print $12}')
-echo  $(awk 'BEGIN{print 100.0-"'"$perc"'"}')%
+echo '<span foreground="#007DC3"></span>' $(awk 'BEGIN{print 100.0-"'"$perc"'"}')%
