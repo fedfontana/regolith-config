@@ -6,17 +6,17 @@ set -Eeu -o pipefail
 # See https://github.com/vivien/i3blocks#interval
 
 # some default values for arguments"
-UP=${label_icon:-$(xrescat i3xrocks.label.up " up")}
-DN=${label_icon:-$(xrescat i3xrocks.label.dn " dn")}
-DLY=${DLY:-5}
-ERROR_DLY=${ERROR_DLY:-10}
+UP=" 祝"
+DN=" "
+DLY=5
+ERROR_DLY=10
 RT=${RT:-}
 
 # Padding the output to 5 characters to avoid jittering on the bar
 NUMFMT="numfmt --to iec --format %f --padding 5"
 
 # determine the net interface name
-IF="${BLOCK_INSTANCE:-$(ip route show default | awk '!/(ppp|tun|tap)/ { print $5 }')}"
+IF=$(ip route show default | awk '!/(ppp|tun|tap)/ { print $5 }')
 
 IF_PATH="/sys/class/net/${IF}"
 
@@ -26,9 +26,10 @@ if [[ "$IF" == "" || ! -d "$IF_PATH" || ! -f "${IF_PATH}"/statistics/rx_bytes ||
 fi
 
 if [ -d "${IF_PATH}/wireless" ]; then
-  NIC=${label_icon:-$(xrescat i3xrocks.label.wifi )}
+  ESSID=$(/sbin/iwconfig $IF | perl -n -e'/ESSID:"(.*?)"/ && print $1')
+  NIC="  $ESSID"
 else
-  NIC=${label_icon:-$(xrescat i3xrocks.label.wired )}
+  NIC=" "
 fi
 
 # read dev file and compute net usage

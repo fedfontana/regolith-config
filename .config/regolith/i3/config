@@ -439,7 +439,8 @@ font pango:Source Code Pro Medium 13
 bar {
   position top #bottom
   mode dock
-  font pango:Source Code Pro Medium 13, Material Design Icons 13
+  #font pango:Source Code Pro Medium 13, Material Design Icons 13
+  font pango:Sauce Code Pro Nerd Font Medium 14
   separator_symbol " | "
   #status_command i3xrocks -u ~/.config/regolith/i3xrocks/conf.d -d /etc/regolith/i3xrocks/conf.d
   status_command i3xrocks -c $HOME/.config/regolith/i3xrocks.conf
@@ -477,3 +478,6 @@ exec --no-startup-id /usr/bin/unclutter -b
 
 # Load nm-applet to provide auth dialogs for network access
 exec --no-startup-id /usr/bin/nm-applet
+
+# Start notification daemon
+exec --no-startup-id dunst -conf $HOME/.config/regolith/dunst/dunstrc
