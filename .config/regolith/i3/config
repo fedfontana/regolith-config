@@ -474,5 +474,5 @@ exec_always --no-startup-id /usr/bin/unclutter --exclude-root -b
 exec_always --no-startup-id /usr/bin/nm-applet
 
 # Start notification daemon
-exec_always --no-startup-id dunst -conf $HOME/.config/regolith/dunst/dunstrc
+exec_always --no-startup-id dunst -config $HOME/.config/regolith/dunst/dunstrc
 

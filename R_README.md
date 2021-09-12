@@ -1,5 +1,16 @@
 # Todo after installation
 
+## Lightdm stuff
+
+- [github topic lightdm-webkit2-greeter](https://github.com/topics/lightdm-webkit2-greeter-theme)
+- [nice lightdm greeter](https://github.com/Demonstrandum/Saluto)
+- [also cool greeter?](https://github.com/naueramant/lightdm-webkit-sequoia)
+
+## No-sort
+
+- [regolith-de pkgbuild (lookup dependencies for arch\_bootstrap)](https://github.com/gardotd426/regolith-de/blob/master/PKGBUILD)
+- [ghub search i3blocks.conf](https://github.com/search?q=i3blocks.conf)
+
 - install gdm3 (lock screen thing)
 - clone config files
 - install stuff
