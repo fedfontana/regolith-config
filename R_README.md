@@ -1,5 +1,13 @@
 # Todo after installation
 
+# Script/config stuff
+/usr/share/xsessions/regolith.desktop viene letto da lightdm
+lightdm esegue il comando Exec (regolith-session)
+come viene eseguito regolith-session-init?
+serve a qualcosa la roba in Xresources
+come impostare tema icone, tema gnome, font?
+quale roba installare e autostart?
+
 ## Lightdm stuff
 
 - [github topic lightdm-webkit2-greeter](https://github.com/topics/lightdm-webkit2-greeter-theme)
@@ -8,26 +16,17 @@
 
 ## No-sort
 
+- [regolith-gnome-flashback](https://github.com/regolith-linux/regolith-gnome-flashback)
 - [regolith-de pkgbuild (lookup dependencies for arch\_bootstrap)](https://github.com/gardotd426/regolith-de/blob/master/PKGBUILD)
 - [ghub search i3blocks.conf](https://github.com/search?q=i3blocks.conf)
 
-- install gdm3 (lock screen thing)
-- clone config files
-- install stuff
 - install gnome-tweaks and:
 	- area touchpad
 	- natural scrolling
 	- disable touchpad while typing or sth is bugging me
-- clone other general config files from dotto
-
-- nello script deve esserci chmox +x di ogni file in .scripts
-- sudo apt install -y jq è prereq per .scripts/i3-swap-display
 
 # Todo finire config 
 - controllare come far funzionare bene roba da laptop
-- bootstrap script?
-- colori vari fanno schifo
-- cambiare config i3 e mettere tutti i keybindings nel posto giusto
 - scrivere script i3blocks decenti
 - cambiare colori rofi (prendere mio config da manji3?)
 - [potrebbe essere carino](https://faq.i3wm.org/question/138/multiple-scratchpad.1.html)
@@ -45,11 +44,7 @@
 - [Source Code Pro nerd font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf)
 
 - picom config
-- nm-manager(-applet) --da mettere in bootstrap.sh
-- Xresources e Xinitrc
-
 - aggiungere echo in bootstrap.sh: cambiare i driver nvidia da Software&Updates
-
 - gnome flashback notifications?
 
 # i3blocks
@@ -64,6 +59,7 @@ Dependencies:
 - playerctl
 - xprop
 - awk
+- jq (per .scripts/swap-display)
 !!! Check dependencies as i have changed the scripts: some new packages might be needed, some old ones might be useless
 
 ## Todo:
@@ -88,3 +84,4 @@ Dependencies:
 - bootstrap_ideas
 - commands.md
 - .config/{alacritty,ranger,regolith,compton.conf,}
+- regolith_sessions_stuff
