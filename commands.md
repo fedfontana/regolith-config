@@ -1,20 +1,14 @@
 ## Comandi
-sudo apt update
-sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl git nvim htop zsh
-chsh -s /usr/bin/zsh # attenzione a non farlo con sudo
-ssh-keygen #aggiungere flag per farlo senza dover dare opzioni manualmente
+chsh -s /usr/bin/zsh
+ssh-keygen
 sh -c 'curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-git clone https://github.com/fedfontana/regolith-config regolith-dots #poi bisogna spostare la roba manualmente e mettere a posto il repo (da non-bare a bare)
-git clone https://github.com/fedfontana/dotto dotfiles #stessa cosa di sopra
-sudo apt install -y telegram-desktop
+git clone https://github.com/fedfontana/regolith-config /home/$USER
+git clone https://github.com/fedfontana/dotto dotfiles /home/$USER
 sudo add-apt-repository ppa:mmstick76/alacritty
-sudo apt install alacritty
-sudo apt install -y tree bat
+sudo apt install -y tree bat alacritty telegram-desktop
 
-alla fine reboot
-## Da mettere in bootstrap
-`echo 'Entra su github/gitlab, elimina chiave ssh dell'installazione precedente e aggiungi $(cat $HOME/.ssh/id_rsa.pub)'`
 ## Da fare manualmente?
 - cambiare in impostazioni:
 	- ordine schermi, schermo principale, risoluzione e Hz
@@ -37,6 +31,5 @@ alla fine reboot
 			- manage dictionaries
 				- add Italiano
 
-## Forse da fare?
-- gdm al posto di lightdm
-- gnome tweaks per invertire scroll con touchpad + area touch per click destro
+## Come fare?
+- invertire scroll con touchpad + area touch per click destro + disable touchpad durante scrittura
