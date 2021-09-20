@@ -32,7 +32,7 @@ set $mod Mod4
 set $alt Mod1
 
 # Rofi theme file
-set $rofiTheme $HOME/.config/regolith/rofi.rasi
+set $rofiConfig $HOME/.config/rofi/config.rasi
 
 # Workspace Names
 set $ws1 "1"
@@ -128,24 +128,38 @@ bindsym $mod+Shift+s exec --no-startup-id gnome-control-center --class=floating_
 ## Launch // Notification Viewer // <><Shift> n ##
 bindsym $mod+Shift+n exec --no-startup-id /usr/bin/rofication-gui
 
+
+###############################################################################
+# Screenshot stuff
+###############################################################################
+
+## Screenshot // Screenshot to clipboard // <Alt><Print> ##
+bindsym $alt+print exec --no-startup-id gnome-screenshot -c
+
+## Screenshot // Window screenshot to clipboard // <Shift><Print> ##
+bindsym $alt+print exec --no-startup-id gnome-screenshot -c -w
+
+## Screenshot // Area screenshot to clipboard // <Ctrl><Print> ##
+bindsym $alt+print exec --no-startup-id gnome-screenshot -c -a
+
 ###############################################################################
 # Launcher dialogs
 ###############################################################################
 
 ## Launch // Application // <> Space ##
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme $rofiTheme
+bindsym $mod+d exec --no-startup-id rofi -show drun -config $rofiConfig
 
 ## Navigate // Window by Name // <><Tab> ##
-bindsym $mod+Tab exec --no-startup-id rofi -show window -theme $rofiTheme
+bindsym $mod+Tab exec --no-startup-id rofi -show window -config $rofiConfig
 
 ## Launch // This Dialog // <><Shift> ? ##
 bindsym $mod+Shift+question exec --no-startup-id $HOME/.scripts/remontoire-toggle
 
-## Launch // i3 config // <Win><Shift> h ##
-#bindsym $mod+Shift+h exec --no-startup-id alacritty --hold -e nvim $HOME/.config/regolith/i3/config
+## Launch // i3 config // <><Shift> h ##
+#bindsym $mod+Shift+h exec --no-startup-id alacritty --hold -e nvim $HOME/.config/i3/config
 
 ## Launch // File Search // <><Alt> Space ##
-bindsym $mod+$alt+space exec --no-startup-id rofi -show find -modi find:$HOME/.config/regolith/modi/finder.sh
+bindsym $mod+$alt+space exec --no-startup-id rofi -config $rofiConfig -show find -modi find:$HOME/.config/rofi/modi/finder.sh
 
 ###############################################################################
 # Window and Workspace Navigation
@@ -443,7 +457,7 @@ bar {
   font pango:Sauce Code Pro Nerd Font Medium 14
   separator_symbol "|"
   #status_command i3xrocks -u ~/.config/regolith/i3xrocks/conf.d -d /etc/regolith/i3xrocks/conf.d
-  status_command i3xrocks -c $HOME/.config/regolith/i3xrocks.conf
+  status_command i3xrocks -c $HOME/.config/i3blocks.conf
   tray_output primary
   strip_workspace_numbers yes
 
@@ -464,6 +478,9 @@ bar {
 # External programs launched with i3
 ###############################################################################
 
+# Set keyboard layout, just to be sure
+exec_always --no-startup-id setxkbmap -rules evdev -model pc105 -layout it -variant ,
+
 # Start the installed regolith-compositor
 exec_always --no-startup-id $HOME/.scripts/picom-init
 
@@ -474,5 +491,4 @@ exec_always --no-startup-id /usr/bin/unclutter --exclude-root -b
 exec_always --no-startup-id /usr/bin/nm-applet
 
 # Start notification daemon
-exec_always --no-startup-id dunst -config $HOME/.config/regolith/dunst/dunstrc
-
+exec_always --no-startup-id dunst -config $HOME/.config/dunst/dunstrc

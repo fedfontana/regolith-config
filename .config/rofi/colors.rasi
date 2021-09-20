@@ -1,0 +1,21 @@
+* {
+    light1:           rgba ( 230, 225, 207, 100 % );
+    red:              rgba ( 255, 102, 102, 100 % );
+    dark1:            rgba ( 31, 36, 48, 100 % );
+    dark4:            rgba ( 191, 186, 176, 100 % );
+    main-color:       var(blue);
+    darkblue:         rgba ( 180, 142, 173, 100 % );
+    green:            rgba ( 206, 230, 172, 100 % );
+    background-color: var(dark1);
+    border-color:     var(dark2);
+    dark2:            rgba ( 41, 43, 48, 100 % );
+    blue:             rgba ( 166, 225, 255, 100 % );
+    selected-color:   var(lightcyan);
+    dark-text-color:  var(dark4);
+    urgent-color:     var(red);
+    highlight:        var(light1);
+    dark3:            rgba ( 191, 186, 176, 100 % );
+    lightcyan:        rgba ( 180, 142, 173, 100 % );
+    text-color:       var(dark3);
+    cyan:             rgba ( 149, 230, 203, 100 % );
+}
