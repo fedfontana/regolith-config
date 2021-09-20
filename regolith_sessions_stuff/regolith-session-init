@@ -5,12 +5,8 @@
 # This script initializes Regolith Xresources and launches i3.
 
 # File Locations - Optional User Overrides
-USER_XRESOURCE_FILE="$HOME/.Xresources-regolith"
-USER_XRESOURCE_OVERRIDE_FILE="$HOME/.config/regolith/Xresources"
-USER_XRESOURCE_SEARCH_PATH="$HOME/.config/regolith/Xresources.d"
+USER_XRESOURCE="$HOME/.config/regolith/Xresources"
 
-# File Locations - System Defaults
-DEFAULT_XRESOURCE_FILE="/etc/regolith/styles/root"
 
 # File Locations - Baseline
 BASELINE_XRESOURCE_FILE="$HOME/.Xresources"
@@ -20,16 +16,9 @@ if [ -f "$BASELINE_XRESOURCE_FILE" ]; then
     xrdb -merge $BASELINE_XRESOURCE_FILE
 fi
 
-# Load Regolith Xresource file or user override
-if [ -f "$USER_XRESOURCE_FILE" ]; then
-    xrdb -I$USER_XRESOURCE_SEARCH_PATH -merge $USER_XRESOURCE_FILE
-else
-    xrdb -merge $DEFAULT_XRESOURCE_FILE
-fi
-
 # Merge user overrides of Xresources if exists
-if [ -f "$USER_XRESOURCE_OVERRIDE_FILE" ]; then
-    xrdb -I$USER_XRESOURCE_SEARCH_PATH -merge $USER_XRESOURCE_OVERRIDE_FILE
+if [ -f "$USER_XRESOURCE" ]; then
+    xrdb -merge $USER_XRESOURCE
 fi
 
 # Change the quotes in workspace names from double to to single.

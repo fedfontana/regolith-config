@@ -8,6 +8,12 @@ serve a qualcosa la roba in Xresources
 come impostare tema icone, tema gnome, font?
 quale roba installare e autostart?
 
+# tmp da xresources 
+```
+#define gtk_theme           Ayu-Mirage-Dark
+#define icon_theme          Moka
+```
+
 ## Lightdm stuff
 
 - [github topic lightdm-webkit2-greeter](https://github.com/topics/lightdm-webkit2-greeter-theme)

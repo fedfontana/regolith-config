@@ -1,0 +1,74 @@
+regolith.look: lascaille
+
+! -- Styles - Colors
+! Ayu Mirage colors - https://github.com/ayu-theme/ayu-colors
+#define color_base03   #1F2430
+#define color_base02   #292B30
+#define color_base01   #BFBAB0
+#define color_base00   #CBCCC6
+#define color_base0    #E6E1CF
+#define color_base1    #E6E1CF
+#define color_base2    #F28779
+#define color_base3    #FFFFFF
+#define color_yellow   #FFD580
+#define color_orange   #FFA759
+#define color_red      #FF3333
+#define color_magenta  #D4BFFF
+#define color_violet   #B48EAD
+#define color_blue     #77A8D9
+#define color_cyan     #95E6CB
+#define color_green    #BAE67E
+#define color_brown    #F29E74
+#define color_ltblue   #73D0FF
+#define color_ltgreen  #A6CC70
+#define color_ltyellow #FFE6B3
+#define color_ltcyan   #5CCFE6  
+
+! -- Styles - Fonts
+! Typeface: JetBrains Mono
+#define typeface_bar_glyph  JetBrains Mono Medium 13
+#define typeface_wm         pango:JetBrains Mono Medium 13
+
+! -- i3-wm
+#define Q(x) #x
+#define QUOTE(x) Q(x)
+
+#define glyph typeface_bar_glyph_workspace
+
+#define glyph_font QUOTE(typeface_bar_glyph)
+
+#define WORKSPACE_NAME(INDEX, FONT, COLOR, GLYPH) INDEX:<span font_desc=FONT> INDEX </span>
+
+i3-wm.workspace.01.name: WORKSPACE_NAME(1, glyph_font, QUOTE(color_blue), glyph)
+i3-wm.workspace.02.name: WORKSPACE_NAME(2, glyph_font, QUOTE(color_cyan), glyph)
+i3-wm.workspace.03.name: WORKSPACE_NAME(3, glyph_font, QUOTE(color_green), glyph)
+i3-wm.workspace.04.name: WORKSPACE_NAME(4, glyph_font, QUOTE(color_yellow), glyph)
+i3-wm.workspace.05.name: WORKSPACE_NAME(5, glyph_font, QUOTE(color_orange), glyph)
+i3-wm.workspace.06.name: WORKSPACE_NAME(6, glyph_font, QUOTE(color_red), glyph)
+i3-wm.workspace.07.name: WORKSPACE_NAME(7, glyph_font, QUOTE(color_magenta), glyph)
+i3-wm.workspace.08.name: WORKSPACE_NAME(8, glyph_font, QUOTE(color_violet), glyph)
+i3-wm.workspace.09.name: WORKSPACE_NAME(9, glyph_font, QUOTE(color_base1), glyph)
+i3-wm.workspace.10.name: WORKSPACE_NAME(10, glyph_font, QUOTE(color_blue), glyph)
+i3-wm.workspace.11.name: WORKSPACE_NAME(11, glyph_font, QUOTE(color_cyan), glyph)
+i3-wm.workspace.12.name: WORKSPACE_NAME(12, glyph_font, QUOTE(color_green), glyph)
+i3-wm.workspace.13.name: WORKSPACE_NAME(13, glyph_font, QUOTE(color_yellow), glyph)
+i3-wm.workspace.14.name: WORKSPACE_NAME(14, glyph_font, QUOTE(color_orange), glyph)
+i3-wm.workspace.15.name: WORKSPACE_NAME(15, glyph_font, QUOTE(color_red), glyph)
+i3-wm.workspace.16.name: WORKSPACE_NAME(16, glyph_font, QUOTE(color_magenta), glyph)
+i3-wm.workspace.17.name: WORKSPACE_NAME(17, glyph_font, QUOTE(color_violet), glyph)
+i3-wm.workspace.18.name: WORKSPACE_NAME(18, glyph_font, QUOTE(color_base1), glyph)
+i3-wm.workspace.19.name: WORKSPACE_NAME(19, glyph_font, QUOTE(color_blue), glyph)
+
+! -- Rofi -- add to .config/regolith/rofi.rasi
+rofi.font:                  JetBrains Mono Medium 16
+rofi.show-icons:            true
+rofi.icon-theme:            Moka
+rofi.drun-display-format:   {name}
+rofi.window-format:         \ {n} {t}
+rofi.modi:                  window,drun,run
+
+!-- Gnome
+gnome.gtk.theme:          Ayu-Mirage-Dark
+gnome.wm.theme:           Ayu-Mirage-Dark
+gnome.icon.theme:         Moka
+gnome.wallpaper:          /usr/share/backgrounds/ESP_016895_1525_desktop.jpg
