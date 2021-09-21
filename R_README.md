@@ -8,10 +8,19 @@ serve a qualcosa la roba in Xresources
 come impostare tema icone, tema gnome, font?
 quale roba installare e autostart?
 
-# tmp da xresources 
+## Colored nautilus folders
+
+[folder color website](http://foldercolor.tuxfamily.org/)
+
+#### Ubuntu 
+```sh
+sudo add-apt-repository ppa:costales/folder-color
+sudo apt install -y folder-color
 ```
-#define gtk_theme           Ayu-Mirage-Dark
-#define icon_theme          Moka
+
+#### Arch
+```sh
+yay -S --needed --noconfirm folder-color-nautilus
 ```
 
 ## Lightdm stuff
