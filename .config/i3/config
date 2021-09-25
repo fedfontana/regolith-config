@@ -137,10 +137,10 @@ bindsym $mod+Shift+n exec --no-startup-id /usr/bin/rofication-gui
 bindsym $alt+Print exec --no-startup-id gnome-screenshot -c
 
 ## Screenshot // Window screenshot to clipboard // <Shift><Print> ##
-bindsym $alt+Print exec --no-startup-id gnome-screenshot -c -w
+bindsym Shift+Print exec --no-startup-id gnome-screenshot -c -w
 
 ## Screenshot // Area screenshot to clipboard // <Ctrl><Print> ##
-bindsym $alt+Print exec --no-startup-id gnome-screenshot -c -a
+bindsym Ctrl+Print exec --no-startup-id gnome-screenshot -c -a
 
 ###############################################################################
 # Launcher dialogs
